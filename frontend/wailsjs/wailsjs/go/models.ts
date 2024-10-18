@@ -1,4 +1,4 @@
-export namespace main {
+export namespace app {
 	
 	export class VolumeInfo {
 	    drive: string;
@@ -6,6 +6,8 @@ export namespace main {
 	    volumeLabel: string;
 	    fileSystem: string;
 	    serialNumber: string;
+	    maxComponentSize: number;
+	    fileSystemFlags: number;
 	
 	    static createFrom(source: any = {}) {
 	        return new VolumeInfo(source);
@@ -18,6 +20,8 @@ export namespace main {
 	        this.volumeLabel = source["volumeLabel"];
 	        this.fileSystem = source["fileSystem"];
 	        this.serialNumber = source["serialNumber"];
+	        this.maxComponentSize = source["maxComponentSize"];
+	        this.fileSystemFlags = source["fileSystemFlags"];
 	    }
 	}
 
