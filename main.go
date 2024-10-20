@@ -12,25 +12,21 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/windows"
 )
 
-//go:embed all:frontend/out frontend/out/_next/static/*/* frontend/out/_next/static/*/*/*
+//go:embed all:frontend/out
 var assets embed.FS
 
 //go:embed build/appicon.png
 var icon []byte
 
 func main() {
-	// Create an instance of the app structure
 	app := app.NewApp()
 
-	// Create application with options
 	err := wails.Run(&options.App{
 		Title:             "paragon",
 		Width:             1024,
 		Height:            768,
 		MinWidth:          1024,
 		MinHeight:         768,
-		MaxWidth:          1280,
-		MaxHeight:         800,
 		DisableResize:     false,
 		Fullscreen:        false,
 		Frameless:         false,
@@ -49,15 +45,12 @@ func main() {
 		Bind: []interface{}{
 			app,
 		},
-		// Windows platform specific options
 		Windows: &windows.Options{
 			WebviewIsTransparent: false,
 			WindowIsTranslucent:  false,
 			DisableWindowIcon:    false,
-			// DisableFramelessWindowDecorations: false,
 			WebviewUserDataPath: "",
 		},
-		// Mac platform specific options
 		Mac: &mac.Options{
 			TitleBar: &mac.TitleBar{
 				TitlebarAppearsTransparent: true,
